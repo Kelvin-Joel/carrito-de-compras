@@ -1,0 +1,7 @@
+[
+  {"id":1, "image": "/img/img1.jpg", "name": "monitor", "price": 400.0 },
+  {"id":2, "image": "/img/img2.jpg", "name": "monitor", "price": 400.0 },
+  {"id":3, "image": "/img/img3.jpg", "name": "monitor", "price": 400.0 },
+  {"id":4, "image": "/img/img4.png", "name": "monitor", "price": 400.0 },
+  {"id":5, "image": "/img/img5.jpg", "name": "monitor", "price": 400.0 }
+]

@@ -1,0 +1,21 @@
+.ListApiProduct {
+  display: grid;
+  gap: 2em;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  padding: 1em;
+  padding-top: 7em;
+}
+.ProductCard {
+  width: 100%;
+  background-color: #fff;
+  flex-direction: column;
+}
+img {
+  width: 90%;
+  height: 200px;
+}
+.BtnAdd {
+  width: 100%;
+  padding: 0.7em 0;
+  background-color: #fea200;
+}
