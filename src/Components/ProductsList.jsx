@@ -8,13 +8,13 @@ function ProductsList() {
   return (
     <div>
       <ProductNabvar />
-      <div className="ListApiProduct">
+      <div className="products">
         {ListApiProduct.map((product) => (
-          <div className="ProductCard flex__between" key={product.id}>
-            <img src={product.image} alt="" />
-            <p className="description">{product.title}</p>
+          <div className="product__card flex__between" key={product.id}>
+            <img className="product__img" src={product.image} alt="" />
+            <p className="product__description">{product.title}</p>
             <p>Price : {product.price}</p>
-            <button className="BtnAdd" onClick={() => ProductAdd(product)}>
+            <button className="product__btn" onClick={() => ProductAdd(product)}>
               Add Card
             </button>
           </div>
