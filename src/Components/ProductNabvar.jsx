@@ -1,39 +1,22 @@
 import React, { useEffect } from "react";
 import useStore from "../store/index";
 import "../App.css";
-import "../Styles/Nabvar.css";
+import "../Styles/Header.css";
 const ProductNabvar = () => {
   const {
     OpenAddedProductsWindow,
     ListAggregatedProducts,
-    CategoryList,
-    FilterCategory,
   } = useStore();
   return (
-    <header className="header flex-between">
-      <span className="title">Cart Buy</span>
-      <nav className="nabvar">
-        <ul className="nabvarList">
-           {CategoryList.map((category) => (
-            <li className="ItemNabvar" key={category}>
-              <a
-                className="linkNabvar"
-                href="#"
-                onClick={() => FilterCategory(category)}
-              >
-                {category}
-              </a>
-            </li>
-          ))} 
-        </ul>
-      </nav>
-      <div className="boxIcon flex-center">
+    <header className="header flex__between">
+      <span className="header__title">Cart Buy</span>
+      <div className="header__icon flex__center">
         <img
-          className="iconCart"
+          className="header__iconImg"
           src="/Icon/iconCart.png"
           onClick={() => OpenAddedProductsWindow()}
         />
-        <span className="CantidaProducts flex-center">
+        <span className="header__quantity flex__center">
           {ListAggregatedProducts.length}
         </span>
       </div>

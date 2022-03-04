@@ -10,7 +10,7 @@ function ProductsList() {
       <ProductNabvar />
       <div className="ListApiProduct">
         {ListApiProduct.map((product) => (
-          <div className="ProductCard flex-between" key={product.id}>
+          <div className="ProductCard flex__between" key={product.id}>
             <img src={product.image} alt="" />
             <p className="description">{product.title}</p>
             <p>Price : {product.price}</p>

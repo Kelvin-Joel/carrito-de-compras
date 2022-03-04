@@ -7,22 +7,22 @@
     background-color: #282c34;
     flex-wrap: wrap;
   }
-  .title {
+  .header__title {
     color: #fff;
     font-weight: bold;
     font-size: 1em;
   }
-  .boxIcon {
+  .header__icon {
     position: relative;
     margin-right: 2em;
   }
-  .iconCart {
+  .header__iconImg {
     height: 50px;
     width: 50px;
     padding: 0.7em;
     cursor: pointer;
   }
-  .CantidaProducts {
+  .header__quantity {
     font-size: 1em;
     position: absolute;
     font-weight: bold;
@@ -34,16 +34,4 @@
     border-radius: 50%;
     color: #fff;
   }
-  
-.nabvar {
-  width: 40%;
-}
-.nabvarList {
-  display: flex;
-  justify-content: space-between;
-  padding: 0;
-}
-.linkNabvar {
-  color: #fff;
-  cursor: pointer;
-}
+

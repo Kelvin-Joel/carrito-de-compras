@@ -55,19 +55,6 @@ export const useStore = create((set, get) => ({
         get().CalculeTotal()
         get().SaveProduct()
     },
-    FilterCategory(categoria) {
-        const FilterProductCategoria = get().ListApiProduct.filter(product => product.category === categoria)
-        if (FilterProductCategoria === undefined) {
-            alert('categoria no existe!')
-            return
-        }
-        set({ ListApiProduct: FilterProductCategoria })
-    },
-    CategorySave(DataApi) {
-        const captured = DataApi.map(item => item.category)
-        const NewListCategory = [...new Set(captured)]
-        set({ CategoryList: NewListCategory })
-    },
 
     /************************* */
     FecthData() {
@@ -75,7 +62,6 @@ export const useStore = create((set, get) => ({
         fetch(url)
             .then(response => response.json())
             .then(result => {
-                get().CategorySave(result)
                 set({ ListApiProduct: result })
                 console.log(get().ListApiProduct)
             })
