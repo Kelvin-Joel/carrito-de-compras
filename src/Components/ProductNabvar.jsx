@@ -4,8 +4,8 @@ import "../App.css";
 import "../Styles/Header.css";
 const ProductNabvar = () => {
   const {
-    OpenAddedProductsWindow,
-    ListAggregatedProducts,
+    OpenShoppingCart,
+    ProductsAddedCart,
   } = useStore();
   return (
     <header className="header flex__between">
@@ -14,10 +14,10 @@ const ProductNabvar = () => {
         <img
           className="header__iconImg"
           src="/Icon/iconCart.png"
-          onClick={() => OpenAddedProductsWindow()}
+          onClick={() => OpenShoppingCart()}
         />
         <span className="header__quantity flex__center">
-          {ListAggregatedProducts.length}
+          {ProductsAddedCart.length}
         </span>
       </div>
     </header>

@@ -1,57 +1,57 @@
 import create from "zustand";
+
 export const useStore = create((set, get) => ({
-    ListApiProduct: [],
-    ListAggregatedProducts: JSON.parse(localStorage.getItem('product')) === null ? [] : JSON.parse(localStorage.getItem('product')),
-    OpenAddedProductsList: false,
+    DataFecth: [],
+    ProductsAddedCart: JSON.parse(localStorage.getItem('product')) === null ? [] : JSON.parse(localStorage.getItem('product')),
+    ShoppingCartStatus: false,
     TotalCart: { TotalProducts: 0, TotalPrice: 0, TotalUnits: 0 },
-    CategoryList: [],
     /**************************** */
     SaveProduct() {
-        localStorage.setItem('product', JSON.stringify(get().ListAggregatedProducts))
+        localStorage.setItem('product', JSON.stringify(get().ProductsAddedCart))
     },
 
     ProductAdd(item) {
-        const isProduct = get().ListAggregatedProducts.find(product => product.id === item.id) !== undefined
+        const isProduct = get().ProductsAddedCart.find(product => product.id === item.id) !== undefined
         if (isProduct) {
             alert('Producto Ya Esta Agregado!')
             return
         }
         const ProductNew = { ...item, cantidad: 1 }
-        set({ ListAggregatedProducts: [...get().ListAggregatedProducts, ProductNew] })
+        set({ ProductsAddedCart: [...get().ProductsAddedCart, ProductNew] })
         get().CalculeTotal();
         get().SaveProduct()
-        console.log(get().ListAggregatedProducts)
+        console.log(get().ProductsAddedCart)
     },
 
     /**************************************** */
-    OpenAddedProductsWindow() {
-        set({ OpenAddedProductsList: !get().OpenAddedProductsList })
+    OpenShoppingCart() {
+        set({ ShoppingCartStatus: !get().ShoppingCartStatus })
     },
     /********************************** */
 
     IncreaseQuantity(item) {
-        const updateCantidad = get().ListAggregatedProducts.map(product => product.id === item.id ?
+        const updateCantidad = get().ProductsAddedCart.map(product => product.id === item.id ?
             { ...product, cantidad: product.cantidad += 1 } : product)
-        set({ ListAggregatedProducts: updateCantidad })
+        set({ ProductsAddedCart: updateCantidad })
         get().CalculeTotal();
     },
     SubtractQuantity(item) {
-        const updateCantidad = get().ListAggregatedProducts.map(product => product.id === item.id ?
+        const updateCantidad = get().ProductsAddedCart.map(product => product.id === item.id ?
             { ...product, cantidad: product.cantidad -= 1 } : product)
-        set({ ListAggregatedProducts: updateCantidad })
+        set({ ProductsAddedCart: updateCantidad })
         get().CalculeTotal();
     },
     CalculeTotal() {
-        const ShopingCart = get().ListAggregatedProducts
+        const ShopingCart = get().ProductsAddedCart
         const TotalProducts = ShopingCart.length;
         const TotalPrice = ShopingCart.reduce((preciTotal, product) => preciTotal + product.price * product.cantidad, 0)
         const TotalUnits = ShopingCart.reduce((units, product) => units + product.cantidad, 0)
         set({ TotalCart: { TotalProducts, TotalPrice, TotalUnits } })
     },
-    ProductDeleteCart(item) {
-        const ProductFilter = get().ListAggregatedProducts
+    DeleteCartProduct(item) {
+        const ProductFilter = get().ProductsAddedCart
         const newproduct = ProductFilter.filter(products => products.id !== item.id)
-        set({ ListAggregatedProducts: newproduct })
+        set({ ProductsAddedCart: newproduct })
         get().CalculeTotal()
         get().SaveProduct()
     },
@@ -62,8 +62,8 @@ export const useStore = create((set, get) => ({
         fetch(url)
             .then(response => response.json())
             .then(result => {
-                set({ ListApiProduct: result })
-                console.log(get().ListApiProduct)
+                set({ DataFecth: result })
+                console.log(get().DataFecth)
             })
     },
 }))

@@ -1,0 +1,8 @@
+*{
+    box-sizing: border-box;
+}
+button{
+    outline:none;
+    border: none;
+    cursor: pointer;
+}

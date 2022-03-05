@@ -4,12 +4,12 @@ import "../App.css";
 import "../Styles/Products.List.css";
 import ProductNabvar from "./ProductNabvar";
 function ProductsList() {
-  const { ProductAdd, ListApiProduct } = useStore();
+  const { ProductAdd, DataFecth } = useStore();
   return (
     <div>
       <ProductNabvar />
       <div className="products">
-        {ListApiProduct.map((product) => (
+        {DataFecth.map((product) => (
           <div className="product__card flex__between" key={product.id}>
             <img className="product__img" src={product.image} alt="" />
             <p className="product__description">{product.title}</p>

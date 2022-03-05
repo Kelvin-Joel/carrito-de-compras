@@ -4,27 +4,26 @@ import "../App.css";
 import '../Styles/ListAggegatedProducts.css'
 const ListAggregatedProducts = () => {
   const {
-    ListAggregatedProducts,
+    ProductsAddedCart,
     SubtractQuantity,
     IncreaseQuantity,
-    ProductDeleteCart,
-    OpenAddedProductsWindow,
+    DeleteCartProduct,
+    OpenShoppingCart,
     TotalCart,
   } = useStore();
-
+  console.log(ProductsAddedCart)
   return (
     <div className="cart">
-      <button className="cart__btnClose" onClick={() => OpenAddedProductsWindow()}>
+      <button className="cart__btnClose" onClick={() => OpenShoppingCart()}>
         Close!
       </button>
 
-      {ListAggregatedProducts.map((product) => (
+      {ProductsAddedCart.map((product) => (
         <div key={product.id} className="flex__between cart__products">
           <div className="flex">
             <img src={product.image} className="cart_productImg"/>
             <div className="cart__productDescription">
-              <p>Name : {product.name}</p>
-              <p>Price $/:{product.price}</p>
+              <p>{product.title}</p>
             </div>
           </div>
 
@@ -36,10 +35,10 @@ const ListAggregatedProducts = () => {
             <button className="button__rest btn" onClick={() => SubtractQuantity(product)}>
               -
             </button>
-
+            <p>$/{product.price}</p>
             <button
                 className="button__delete"
-                onClick={() => ProductDeleteCart(product)}
+                onClick={() => DeleteCartProduct(product)}
               >
                 Delete
               </button>

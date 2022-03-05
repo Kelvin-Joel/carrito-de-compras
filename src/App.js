@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import './App.css';
-import ListAggregatedProducts from './Components/ListAggregatedProducts';
+import ShoppingCart from './Components/ShoppingCart';
 import ProductsList from './Components/ProductsList';
 import useStore from './store';
 
 function App() {
-  const { OpenAddedProductsList,FecthData, } = useStore();
+  const { ShoppingCartStatus,FecthData, } = useStore();
  
   useEffect(()=>{
     FecthData();
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       {
-        OpenAddedProductsList ? <ListAggregatedProducts /> : <ProductsList />
+        ShoppingCartStatus ? <ShoppingCart /> : <ProductsList />
       }
     </div>
   );
