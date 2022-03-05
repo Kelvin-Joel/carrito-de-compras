@@ -16,7 +16,7 @@ export const useStore = create((set, get) => ({
             alert('Producto Ya Esta Agregado!')
             return
         }
-        const ProductNew = { ...item, cantidad: 1 }
+        const ProductNew = { ...item, quantity: 1 }
         set({ ProductsAddedCart: [...get().ProductsAddedCart, ProductNew] })
         get().CalculeTotal();
         get().SaveProduct()
@@ -27,27 +27,38 @@ export const useStore = create((set, get) => ({
     OpenShoppingCart() {
         set({ ShoppingCartStatus: !get().ShoppingCartStatus })
     },
-    /********************************** */
+    /********************************************************* */
 
     IncreaseQuantity(item) {
         const updateCantidad = get().ProductsAddedCart.map(product => product.id === item.id ?
-            { ...product, cantidad: product.cantidad += 1 } : product)
+            { ...product, quantity: product.quantity += 1 } : product)
         set({ ProductsAddedCart: updateCantidad })
         get().CalculeTotal();
     },
+
+    /**************************************************** */
     SubtractQuantity(item) {
         const updateCantidad = get().ProductsAddedCart.map(product => product.id === item.id ?
-            { ...product, cantidad: product.cantidad -= 1 } : product)
-        set({ ProductsAddedCart: updateCantidad })
-        get().CalculeTotal();
+            { ...product, quantity: product.quantity -= 1 } : product)
+
+        const QuantityValidation = updateCantidad.find(product => product.id === item.id)
+
+        if (QuantityValidation.quantity !== 1) {
+            set({ ProductsAddedCart: updateCantidad })
+            get().CalculeTotal();
+            return
+        }
+
     },
+    /************************************************************************* */
     CalculeTotal() {
         const ShopingCart = get().ProductsAddedCart
         const TotalProducts = ShopingCart.length;
-        const TotalPrice = ShopingCart.reduce((preciTotal, product) => preciTotal + product.price * product.cantidad, 0)
-        const TotalUnits = ShopingCart.reduce((units, product) => units + product.cantidad, 0)
+        const TotalPrice = ShopingCart.reduce((preciTotal, product) => preciTotal + product.price * product.quantity, 0)
+        const TotalUnits = ShopingCart.reduce((units, product) => units + product.quantity, 0)
         set({ TotalCart: { TotalProducts, TotalPrice, TotalUnits } })
     },
+    /********************************************************************************* */
     DeleteCartProduct(item) {
         const ProductFilter = get().ProductsAddedCart
         const newproduct = ProductFilter.filter(products => products.id !== item.id)
@@ -56,14 +67,13 @@ export const useStore = create((set, get) => ({
         get().SaveProduct()
     },
 
-    /************************* */
+    /*****************************************************************************/
     FecthData() {
         const url = 'https://fakestoreapi.com/products'
         fetch(url)
             .then(response => response.json())
             .then(result => {
                 set({ DataFecth: result })
-                console.log(get().DataFecth)
             })
     },
 }))

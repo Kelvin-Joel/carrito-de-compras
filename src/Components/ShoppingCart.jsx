@@ -1,7 +1,7 @@
 import React from "react";
 import useStore from "../store";
 import "../App.css";
-import '../Styles/ListAggegatedProducts.css'
+import "../Styles/ShoppingCart.css";
 const ListAggregatedProducts = () => {
   const {
     ProductsAddedCart,
@@ -11,38 +11,42 @@ const ListAggregatedProducts = () => {
     OpenShoppingCart,
     TotalCart,
   } = useStore();
-  console.log(ProductsAddedCart)
+  console.log(ProductsAddedCart);
   return (
-    <div className="cart">
+    <div className="ShoppingCart">
       <button className="cart__btnClose" onClick={() => OpenShoppingCart()}>
         Close!
       </button>
 
       {ProductsAddedCart.map((product) => (
         <div key={product.id} className="flex__between cart__products">
-          <div className="flex">
-            <img src={product.image} className="cart_productImg"/>
-            <div className="cart__productDescription">
-              <p>{product.title}</p>
-            </div>
+          <img src={product.image} className="cart_productImg" />
+          <p>{product.title}</p>
+
+          <div className="buttons flex__between">
+          <button
+            className="button__sum btn"
+            onClick={() => IncreaseQuantity(product)}
+          >
+            +
+          </button>
+          <p>{product.quantity}</p>
+          <button
+            className="button__rest btn"
+            onClick={() => SubtractQuantity(product)}
+          >
+            -
+          </button>
+          
+          <p>$/{product.price}</p>  
           </div>
 
-          <div className="buttons">
-            <button className="button__sum btn" onClick={() => IncreaseQuantity(product)}>
-              +
-            </button>
-            <p>{product.cantidad}</p>
-            <button className="button__rest btn" onClick={() => SubtractQuantity(product)}>
-              -
-            </button>
-            <p>$/{product.price}</p>
-            <button
-                className="button__delete"
-                onClick={() => DeleteCartProduct(product)}
-              >
-                Delete
-              </button>
-          </div>
+          <button
+            className="button__delete"
+            onClick={() => DeleteCartProduct(product)}
+          >
+            Delete
+          </button>
         </div>
       ))}
       <div className="TotalAmount">

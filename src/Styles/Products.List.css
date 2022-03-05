@@ -51,11 +51,6 @@
   text-align: left;
   display: flex;
 }
-
-.buttons {
-  display: flex;
-  width: 300px;
-}
 .btn{
   margin: 0 auto;
   border-radius: 50%;
@@ -67,20 +62,4 @@
   font-weight: bold;
   display: grid;
   place-items: center;
-}
-.button__sum {
-  margin-right: 1.5em;
-}
-.button__delete{
-  background-color: rgb(245, 10, 10);
-  color: #fff;
-  width: 100px;
-  height: 40px;
-  border-radius: 3px;
-}
-.TotalAmount{
-  margin-bottom: 3em;
-}
-span{
-  display: block;
 }

@@ -1,0 +1,34 @@
+.ShoppingCart {
+  width: 70%;
+  color: #fff;
+  padding-left: 1em;
+}
+.buttons {
+  width: 200px;
+  margin-right: 1em;
+}
+.button__sum {
+  margin-right: 1.5em;
+}
+.button__delete {
+  background-color: rgb(245, 10, 10);
+  color: #fff;
+  width: 100px;
+  height: 40px;
+  border-radius: 3px;
+}
+.TotalAmount {
+  margin-bottom: 3em;
+}
+span {
+  display: block;
+}
+.TotalAmount {
+  text-align: left;
+  border-radius: 3px;
+  width: 50%;
+}
+.TotalAmount span {
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
