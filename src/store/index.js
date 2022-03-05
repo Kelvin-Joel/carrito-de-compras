@@ -37,24 +37,25 @@ export const useStore = create((set, get) => ({
     },
 
     /**************************************************** */
-    SubtractQuantity(item) {
+    DecreaseQuantity(item) {
         const updateCantidad = get().ProductsAddedCart.map(product => product.id === item.id ?
             { ...product, quantity: product.quantity -= 1 } : product)
 
-        const QuantityValidation = updateCantidad.find(product => product.id === item.id)
+        /* const QuantityValidation = updateCantidad.find(product => product.id === item.id) */
+       /*  if (QuantityValidation.quantity !== 1) {*/
+       /*     */  
+       /*  } */
 
-        if (QuantityValidation.quantity !== 1) {
-            set({ ProductsAddedCart: updateCantidad })
+        set({ ProductsAddedCart: updateCantidad })
             get().CalculeTotal();
             return
-        }
 
     },
     /************************************************************************* */
     CalculeTotal() {
         const ShopingCart = get().ProductsAddedCart
         const TotalProducts = ShopingCart.length;
-        const TotalPrice = ShopingCart.reduce((preciTotal, product) => preciTotal + product.price * product.quantity, 0)
+        const TotalPrice = ShopingCart.reduce((priceTotal, product) => priceTotal + product.price * product.quantity, 0)
         const TotalUnits = ShopingCart.reduce((units, product) => units + product.quantity, 0)
         set({ TotalCart: { TotalProducts, TotalPrice, TotalUnits } })
     },

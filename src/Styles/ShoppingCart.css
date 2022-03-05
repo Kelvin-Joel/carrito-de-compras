@@ -1,11 +1,36 @@
-.ShoppingCart {
-  width: 70%;
+.shopping-cart {
+  width: 100%;
   color: #fff;
   padding-left: 1em;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.shopping-cart__products{
+  margin-bottom: 2em;
+  border: 1px solid #ccc;
+  width: 60%;
+  padding: .5em;
+  border-radius: 5px;
+}
+.shopping-cart__product-img{
+  height: 100px;
+  width: 80px;
 }
 .buttons {
-  width: 200px;
+  width: 250px;
   margin-right: 1em;
+}
+.btn{
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: rgb(214, 69, 2);
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: grid;
+  place-items: center;
 }
 .button__sum {
   margin-right: 1.5em;
@@ -17,18 +42,16 @@
   height: 40px;
   border-radius: 3px;
 }
-.TotalAmount {
-  margin-bottom: 3em;
-}
 span {
   display: block;
 }
-.TotalAmount {
+.total-payable {
+  margin-bottom: 3em;
   text-align: left;
   border-radius: 3px;
   width: 50%;
 }
-.TotalAmount span {
+.total-payable span {
   margin-bottom: 0.5em;
   font-weight: bold;
 }

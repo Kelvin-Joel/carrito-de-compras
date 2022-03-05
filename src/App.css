@@ -1,3 +1,12 @@
+*{
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+body{
+  margin: 0;
+}
 .App {
   text-align: center;
   background-color: #282c34;
@@ -21,9 +30,9 @@ button {
   outline: none;
   cursor: pointer;
 }
-img {
+/* img {
   width: 90%;
   height: 200px;
-}
+} */
 
 
