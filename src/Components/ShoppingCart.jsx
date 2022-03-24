@@ -11,7 +11,7 @@ const ListAggregatedProducts = () => {
     OpenShoppingCart,
     TotalCart,
   } = useStore();
-  
+
   return (
     <div className="shopping-cart">
       <button className="cart__btn-close" onClick={() => OpenShoppingCart()}>
@@ -24,21 +24,21 @@ const ListAggregatedProducts = () => {
           <p>{product.title}</p>
 
           <div className="buttons flex__between">
-          <button
-            className="button__sum btn "
-            onClick={() => IncreaseQuantity(product)}
-          >
-            +
-          </button>
-          <p>{product.quantity}</p>
-          <button
-            className="button__rest btn "
-            onClick={() => DecreaseQuantity(product)}
-          >
-            -
-          </button>
-          
-          <p>$/{product.price}</p>  
+            <button
+              className="button__sum btn "
+              onClick={() => IncreaseQuantity(product)}
+            >
+              +
+            </button>
+            <p>{product.quantity}</p>
+            <button
+              className="button__rest btn "
+              onClick={() => DecreaseQuantity(product)}
+            >
+              -
+            </button>
+
+            <p>$/{product.price}</p>
           </div>
 
           <button
